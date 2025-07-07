@@ -5,13 +5,16 @@ import {
   FaArrowLeft,
   FaArrowRight,
   FaBars,
+  FaHistory,
   FaHome,
   FaSearch,
   FaThumbsUp,
+  FaUpload,
 } from "react-icons/fa";
 import { AiFillCustomerService, AiFillMessage } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 import { LuLogOut } from "react-icons/lu";
+import { MdWatchLater } from "react-icons/md"
 
 function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -27,7 +30,7 @@ function Navbar() {
       {/* Header */}
       <header className="bg-zinc-950  ">
         <div className="flex justify-between items-center px-2 py-3 sm:px-10">
-          <div className="font-bold text-3xl text-red-500">
+          <div className="font-bold text-xl md:text-3xl text-red-500">
             Loo
             <span className="font-medium bg-red-500 rounded-3xl text-white">
               py
@@ -46,6 +49,17 @@ function Navbar() {
               <FaSearch />
             </button>
           </form>
+
+          <button className="bg-zinc-800 p-1">
+            <Link
+              to="/"
+              className=" hidden bg-zinc-800 w-full transition-colors duration-300 hover:text-red-500 cursor-pointer text-white md:block"
+            >
+              <FaUpload />
+              
+              
+            </Link>
+          </button>
 
           {/* Navbar */}
           <button
@@ -71,6 +85,14 @@ function Navbar() {
             </Link>
             <Link
               to="/"
+              className="pl-2 py-2 md:none bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
+            >
+              <FaUpload />
+              Upload
+            </Link>
+             
+            <Link
+              to="/"
               className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
             >
               <FaThumbsUp />
@@ -82,6 +104,20 @@ function Navbar() {
             >
               <AiFillMessage />
               Comments
+            </Link>
+             <Link
+              to="/"
+              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
+            >
+              <MdWatchLater />
+              Watch later
+            </Link>
+             <Link
+              to="/"
+              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
+            >
+              <FaHistory />
+              Watch History
             </Link>
             <Link
               to="/"
@@ -97,6 +133,7 @@ function Navbar() {
               <AiFillCustomerService />
               Contact
             </Link>
+           
             <Link
               to="/"
               className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
