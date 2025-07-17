@@ -1,0 +1,56 @@
+Animation in tailwind
+Different Animation like zoom, fade, slide etc.
+
+npm i aos
+
+in page use React.useEffect(() => {
+AOS.inti({duration: 500, once:true})
+}.[])
+
+
+Then in which div we need to give this there we use 
+•	data-aos-delay="200" — Delay before animation (in ms)
+•	data-aos-duration="1000" — Duration of animation
+•	data-aos-offset="200" — Trigger animation earlier/later
+•	data-aos-easing="ease-in-out" — Animation timing function
+•	data-aos-anchor-placement="top-bottom" — Control where in the viewport the animation triggers
+
+🎯 Fade Animations
+•	fade
+•	fade-up
+•	fade-down
+•	fade-left
+•	fade-right
+•	fade-up-right
+•	fade-up-left
+•	fade-down-right
+•	fade-down-left
+
+🎯 Flip Animations
+•	flip-up
+•	flip-down
+•	flip-left
+•	flip-right
+________________________________________
+🎯 Slide Animations
+•	slide-up
+•	slide-down
+•	slide-left
+•	slide-right
+________________________________________
+🎯 Zoom Animations
+•	zoom-in
+•	zoom-in-up
+•	zoom-in-down
+•	zoom-in-left
+•	zoom-in-right
+•	zoom-out
+•	zoom-out-up
+•	zoom-out-down
+•	zoom-out-left
+•	zoom-out-right
+
+Lets we need an array of divs falke div so we can’t make it manually we make using a special tip.
+Lets boxes = Array(12).fill(null)
+ In map function we see 12 div and color any every thing as per our needed._
+
