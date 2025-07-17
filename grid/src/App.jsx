@@ -1,15 +1,16 @@
 
 import { BrowserRouter } from "react-router-dom"
 import "../src/App.css"
-import Box_animation from './components/Box_animation'
-import Navbar from "./components/Navbar"
+import Cards from "./components/Cards"
 
 function App() {
  
   return (
     <div>
      <BrowserRouter>
-      <Navbar />
+      {/* <Navbar />
+      <Box_animation/> */}
+      <Cards/>
 
      </BrowserRouter>
     </div>
