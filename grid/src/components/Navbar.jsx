@@ -1,153 +1,120 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
 import {
-  FaAddressBook,
-  FaArrowLeft,
-  FaArrowRight,
-  FaBars,
-  FaHistory,
-  FaHome,
-  FaSearch,
-  FaThumbsUp,
-  FaUpload,
-} from "react-icons/fa";
-import { AiFillCustomerService, AiFillMessage } from "react-icons/ai";
-import { RxCross1 } from "react-icons/rx";
-import { LuLogOut } from "react-icons/lu";
-import { MdWatchLater } from "react-icons/md"
+  LuCat, LuHouse, LuLayoutDashboard, LuLogOut, LuMenu,
+  LuThumbsUp, LuTrendingUp, LuUserCheck, LuUserRound, LuVideo
+} from 'react-icons/lu'
+import { FaComment, FaSearch, FaUser, FaUpload } from 'react-icons/fa'
+import { MdOutlineExplore, MdOutlineReportOff, MdOutlineRoundaboutLeft } from 'react-icons/md'
+import { Link, NavLink } from 'react-router-dom'
 
 function Navbar() {
-  const [showNavbar, setShowNavbar] = useState(false);
-  const [isClick, setIsClick] = useState(false);
-  const handleOnClick = () => {
-    setShowNavbar((prev) => !prev);
-    setIsClick((prev) => !prev);
-  };
+  const [menu, setMenu] = React.useState(false)
 
-  
+  const toggleMenu = () => {
+    setMenu(prev => !prev)
+  }
+
   return (
     <>
       {/* Header */}
-      <header className="bg-zinc-950  ">
-        <div className="flex justify-between items-center px-2 py-3 sm:px-10">
-          <div className="font-bold text-xl md:text-3xl text-red-500">
-            Loo
-            <span className="font-medium bg-red-500 rounded-3xl text-white">
-              py
-            </span>
-          </div>
+      <header className='fixed top-0 left-0 w-full z-50 flex justify-between items-center bg-black text-white px-4 py-2 shadow-md'>
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <img src="avatar2.jpg" alt="logo" className="h-10 rounded-full" />
+          <span className="hidden md:block font-bold text-lg text-red-500">MyStream</span>
+        </div>
 
-          {/* searchbar */}
-          <form className="flex" id="search-form" name="search-form">
-            <input
-              id="search"
-              name="search"
-              type="search"
-              className="bg-zinc-700 px-2 py-0.5 text-white outline-0 focus:ring-1 focus:ring-red-500 sm:w-[300px] md:w-[400px]"
-            />
-            <button className="bg-red-500 cursor-pointer py-2 px-3 text-white">
-              <FaSearch />
-            </button>
-          </form>
+        {/* Search */}
+        <form className="hidden md:flex items-center bg-zinc-800 ring-1 ring-white rounded-full px-3 py-1 w-[200px] md:w-[400px]">
+          <FaSearch className="text-gray-400" />
+          <input
+            type="search"
+            placeholder="Search..."
+            className="bg-transparent outline-none text-sm text-white ml-2 w-full"
+          />
+        </form>
 
-          <button className="bg-zinc-800 p-1">
-            <Link
-              to="/"
-              className=" hidden bg-zinc-800 w-full transition-colors duration-300 hover:text-red-500 cursor-pointer text-white md:block"
-            >
-              <FaUpload />
-              
-              
-            </Link>
-          </button>
+        {/* Desktop Icons */}
+        <div className="hidden md:flex items-center gap-5 text-xl">
+          <NavLink to="/" className={({ isActive }) =>
+            isActive ? 'text-red-500' : 'text-white hover:text-red-400'
+          }><LuHouse /></NavLink>
 
-          {/* Navbar */}
-          <button
-            onClick={handleOnClick}
-            className="bg-zinc-800 p-1 rounded text-white text-2xl cursor-pointer"
-          >
-            {isClick ? <RxCross1 /> : <FaBars />}
+          <NavLink to="/profile" className={({ isActive }) =>
+            isActive ? 'text-red-500' : 'text-white hover:text-red-400'
+          }><LuUserRound /></NavLink>
+
+          <NavLink to="/upload" className={({ isActive }) =>
+            isActive ? 'text-red-500' : 'text-white hover:text-red-400'
+          }><FaUpload /></NavLink>
+        </div>
+
+        {/* Right Menu */}
+        <div className="flex items-center gap-3">
+          <button onClick={toggleMenu} className="md:hidden text-xl">
+            <LuMenu />
           </button>
         </div>
       </header>
 
-      <div className={`fixed top-[60px] right-0 h-auto p-2 w-[250px] bg-zinc-800 z-40 transform transition-transform duration-300 ease-in-out ${
-          showNavbar ? "translate-x-0 block" : "translate-x-full"
-        }`}>
-        {showNavbar ? (
-          <div className="flex flex-col">
-            <Link
-              to="/"
-              className="pl-2 py-2  bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <FaHome />
-              Home
-            </Link>
-            <Link
-              to="/"
-              className="pl-2 py-2 md:none bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <FaUpload />
-              Upload
-            </Link>
-             
-            <Link
-              to="/"
-              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <FaThumbsUp />
-              Likes{" "}
-            </Link>
-            <Link
-              to="/"
-              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <AiFillMessage />
-              Comments
-            </Link>
-             <Link
-              to="/"
-              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <MdWatchLater />
-              Watch later
-            </Link>
-             <Link
-              to="/"
-              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <FaHistory />
-              Watch History
-            </Link>
-            <Link
-              to="/"
-              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <FaAddressBook />
-              About
-            </Link>
-            <Link
-              to="/"
-              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <AiFillCustomerService />
-              Contact
-            </Link>
-           
-            <Link
-              to="/"
-              className="pl-2 py-2 bg-zinc-800 w-full flex items-center gap-2 md:text-xl transition-colors duration-300 hover:text-red-500 cursor-pointer  text-white"
-            >
-              <LuLogOut />
-              Logout
-            </Link>
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+      {/* Mobile Dropdown Menu */}
+      {menu && (
+        <div className="md:hidden fixed top-[60px] right-0 bg-black text-white w-[200px] shadow-lg rounded-bl-lg p-3 flex flex-col gap-3 z-40">
+          <NavLink to="/" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><LuHouse /> Home</NavLink>
+
+          <NavLink to="/profile" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><LuUserRound /> Profile</NavLink>
+
+          <NavLink to="/upload" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><FaUpload /> Upload</NavLink>
+
+          <NavLink to="/likes" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><LuThumbsUp /> Likes</NavLink>
+
+          <NavLink to="/comments" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><FaComment /> Comments</NavLink>
+
+          <NavLink to="/explore" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><MdOutlineExplore /> Explore</NavLink>
+
+          <NavLink to="/categories" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><LuCat /> Categories</NavLink>
+
+          <NavLink to="/videos" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><LuVideo /> New Videos</NavLink>
+
+          <NavLink to="/trending" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><LuTrendingUp /> Trending</NavLink>
+
+          <NavLink to="/dashboard" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><LuLayoutDashboard /> Dashboard</NavLink>
+
+          <NavLink to="/about" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><MdOutlineRoundaboutLeft /> About</NavLink>
+
+          <NavLink to="/report" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><MdOutlineReportOff /> Report</NavLink>
+
+          <NavLink to="/logout" className={({ isActive }) =>
+            isActive ? 'text-red-500 font-bold flex items-center gap-2' : 'text-white flex items-center gap-2'
+          }><LuLogOut /> Logout</NavLink>
+        </div>
+      )}
     </>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar
