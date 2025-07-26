@@ -1,84 +1,126 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import user from '../user';
 
 function CreatorProfile() {
 
-    const array = new Array(12).fill(null)
+  if(!user) return <div>Loading...</div>
+
   return (
-    <div className="mt-[66px] md:mt-[81px] w-full">
+    <div className='bg-black text-white'>
+      {/* Cover Image */}
+      <div style={{
+        backgroundImage: `url('${user.coverImage || '/avatar2.jpg'}')`,
+      }}
+      className='mt-[66px] md:mt-[80px] h-[200px] sm:h-[250px] sm:mx-6 rounded-lg bg-center bg-contain relative'></div>
 
-      {/* Cover Image Full Width */}
-      <div className="w-full h-[200px] md:h-[300px] bg-cover bg-center relative"
-        style={{
-          backgroundImage:
-            "url('https://cdn.pixabay.com/photo/2016/10/31/16/24/book-1786027_640.png')"
-        }}
-      ></div>
+      {/* User details and avatar */}
+      <div className="flex gap-5 justify-center items-center p-4 sm:mx-6">
+        <img
+        className='h-[100px] md:h-[150px] rounded-full ring-1 ring-red-500' 
+        src={user.avatar}
+         alt="User avatar" />
 
-      {/* Avatar and User Info (Positioned Below on md+) */}
-      <div className="relative w-full max-w-5xl mx-auto px-4">
+         <div className="flex flex-col justify-center">
+          <h3 className='text-lg'>{user.fullName}</h3>
+          <p className="text-sm text-gray-300 hover:text-gray-400 duration-200">@{user.username}</p>
+          <a href="#" className='text-sm text-blue-500 hover:text-blue-600 duration-200'>Email {user.email}</a>
+         </div>
 
-        {/* Avatar overlaps cover image */}
-        <div className="flex flex-col md:flex-row md:items-end md:gap-6 -mt-16 md:-mt-20">
-          <img
-            src="https://tse1.mm.bing.net/th/id/OIP.Rg2FmvXuSaiA7GHVqvuY0QHaFj?pid=Api&P=0&h=180"
-            alt="Avatar"
-            className="h-24 w-24 md:h-32 md:w-32 rounded-full border-4 border-white shadow-md"
-          />
+         <Link to="/users/update-profile" className='bg-red-500 py-0.5 px-2.5 rounded-lg text-white'>Edit</Link>
+      </div> 
 
-          {/* User Info */}
-          <div className="mt-4 md:mt-0">
-            <p className="text-2xl md:text-3xl font-semibold">John Doe</p>
-            <p className="text-gray-600">@johndoe</p>
-            <p className="text-sm text-gray-500">john.doe@example.com</p>
+      {/* About this creator */}
+      <div className=' flex justify-center items-center gap-5 mx-2'>
+
+        <div className='bg-gray-800 flex flex-col justify-center items-center rounded-xl p-1'>
+          <h3 className='text-white text-sm sm:text-md text-center'>Video Upload</h3>
+          <p className='text-gray-300 text-xs sm:text-sm'>120</p>
           </div>
+
+        <div className='bg-gray-800 flex flex-col justify-center items-center rounded-xl p-1'>
+          <h3 className='text-white text-sm sm:text-md text-center'>Profile Views</h3>
+          <p className='text-gray-300 text-xs sm:text-sm'>1234</p>
+        </div>
+
+        <div className='bg-gray-800 flex flex-col justify-center items-center rounded-xl p-1'>
+          <h3 className='text-white text-sm sm:text-md text-center'>Date Of Join</h3>
+          <p className='text-gray-300 text-xs sm:text-sm'>26/03/2025</p>
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="w-full max-w-5xl mx-auto mt-8 px-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-        <div className="bg-gray-100 p-4 rounded shadow">
-          <p className="text-xl font-bold">120</p>
-          <p>Videos Uploaded</p>
-        </div>
-        <div className="bg-gray-100 p-4 rounded shadow">
-          <p className="text-xl font-bold">3.5k</p>
-          <p>Profile Views</p>
-        </div>
-        <div className="bg-gray-100 p-4 rounded shadow">
-          <p className="text-xl font-bold">Joined Jan 2023</p>
-          <p>Member Since</p>
-        </div>
+      {/* Subscribe button */}
+     <div className="mt-3 flex justify-center items-center">
+       <button className='bg-red-500 font-semibold text-white px-0.5 py-2.5 w-[200px] rounded-lg hover:bg-red-600 duration-300 hover:text-gray-300'>Subscribe</button>
+     </div>
+
+
+      {/* Videos sections */}
+      <div className="flex justify-center items-center gap-6 p-2 mt-4 overflow-y-auto">
+        
+        <Link to="#"
+        className='text-sm bg-slate-900 px-3 py-1 rounded-lg hover:bg-slate-700 duration-300'
+        >All</Link>
+        <Link to="#"
+        className='text-sm bg-slate-900 px-3 py-1 rounded-lg hover:bg-slate-700 duration-300'
+        >Uploaded</Link>
+        <Link to="#"
+        className='text-sm bg-slate-900 px-3 py-1 rounded-lg hover:bg-slate-700 duration-300'
+        >Likes</Link>
+        <Link to="#"
+        className='text-sm bg-slate-900 px-3 py-1 rounded-lg hover:bg-slate-700 duration-300'
+        >Comments</Link>
+        <Link to="#"
+        className='text-sm bg-slate-900 px-3 py-1 rounded-lg hover:bg-slate-700 duration-300'
+        >Subscribed</Link>
+        <Link to="#"
+        className='text-sm bg-slate-900 px-3 py-1 rounded-lg hover:bg-slate-700 duration-300'
+        >Watchlist</Link>
       </div>
 
-      {/* Sections: Videos, Likes, Comments */}
-      <div className="w-full max-w-5xl mx-auto mt-10 px-4">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3">
+  {user.videos.map((video, index) => (
+    <Link
+      key={index}
+      className="group p-2 mt-4 overflow-hidden shadow-md shadow-gray-800 hover:shadow-2xs hover:shadow-amber-200 max-w-[360px] border-2 border-amber-950"
+    >
+      {/* Hover video over thumbnail */}
+      <div className="relative h-[200px] w-full">
+        <img
+          className="h-full w-full object-cover rounded-lg group-hover:hidden"
+          src={video.vid_thumbnail}
+          alt="thumbnail"
+        />
+        <video
+          className="h-full w-full object-cover rounded-lg hidden group-hover:block"
+          src={video.vid_Src}
+          autoPlay
+          loop
+          muted
+        />
+      </div>
 
-        <h2 className="text-xl font-semibold mb-4">Your Videos</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white shadow-md p-3 rounded">
-            <div className="bg-gray-200 h-40 rounded mb-2"></div>
-            <p className="font-medium">Video Title 1</p>
-          </div>
-        </div>
+      {/* Video Description */}
+      <p className="text-white font-sm mt-1">{video.vid_title}</p>
 
-        <h2 className="text-xl font-semibold mb-4">Liked Videos</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white shadow-md p-3 rounded">
-            <div className="bg-gray-200 h-40 rounded mb-2"></div>
-            <p className="font-medium">Liked Video 1</p>
-          </div>
-        </div>
-
-        <h2 className="text-xl font-semibold mb-4">Commented Videos</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white shadow-md p-3 rounded">
-            <div className="bg-gray-200 h-40 rounded mb-2"></div>
-            <p className="font-medium">Commented Video 1</p>
-          </div>
+      {/* User info */}
+      <div className="flex gap-2 items-center mt-2">
+        <img
+          className="h-10 rounded-full"
+          src={user.avatar}
+          alt="avatar"
+        />
+        <div className="flex flex-col">
+          <p className="text-white text-sm">{user.username}</p>
+          <p className="text-gray-300 text-xs">{video.vid_views} views</p>
         </div>
       </div>
+    </Link>
+  ))}
+</div>
+
     </div>
-  );
+  )
 }
 
-export default CreatorProfile;
+export default CreatorProfile
