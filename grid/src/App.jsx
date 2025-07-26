@@ -3,13 +3,15 @@ import CreatorProfile from "./components/CreatorProfile"
 // import Cards from "./components/Cards"
 // import DialogBox from "./components/DialogBox"
 import Navbar from "./components/Navbar"
+import WatchVideoPage from "./Pages/WatchVideoPage"
 
 function App() {
  
   return (
     <div>
-       <Navbar />
-       <CreatorProfile/>
+       {/* <Navbar />
+       <CreatorProfile/> */}
+       <WatchVideoPage />
      {/* <Box_animation/> */}
       {/* <Cards/> */}
       {/* <DialogBox/> */}

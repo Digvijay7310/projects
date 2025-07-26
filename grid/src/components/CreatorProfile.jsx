@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import user from '../user';
+import { FaEdit } from 'react-icons/fa';
 
 function CreatorProfile() {
 
@@ -12,7 +13,7 @@ function CreatorProfile() {
       <div style={{
         backgroundImage: `url('${user.coverImage || '/avatar2.jpg'}')`,
       }}
-      className='mt-[66px] md:mt-[80px] h-[200px] sm:h-[250px] sm:mx-6 rounded-lg bg-center bg-contain relative'></div>
+      className='mt-[66px] md:mt-[80px] h-[200px] sm:h-[250px] sm:mx-6 md:mx-10 rounded-lg bg-center bg-cover relative'></div>
 
       {/* User details and avatar */}
       <div className="flex gap-5 justify-center items-center p-4 sm:mx-6">
@@ -27,7 +28,8 @@ function CreatorProfile() {
           <a href="#" className='text-sm text-blue-500 hover:text-blue-600 duration-200'>Email {user.email}</a>
          </div>
 
-         <Link to="/users/update-profile" className='bg-red-500 py-0.5 px-2.5 rounded-lg text-white'>Edit</Link>
+         <Link to="/users/update-profile" className='bg-red-500 p-0.5 rounded-lg text-white'>
+         <FaEdit title='Edit Profile' /> </Link>
       </div> 
 
       {/* About this creator */}
