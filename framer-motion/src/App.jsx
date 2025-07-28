@@ -1,4 +1,4 @@
-import './App.css'
+
 import {motion} from "motion/react"
 
 function App() {
@@ -12,11 +12,14 @@ function App() {
         y:0
        }}
        animate={{
-        x:600,
-        y:200
+        x:[0, 100, 100, 0,0],
+        y:[0, 0, 100, 100, 0]
        }}
-       className='bg-red-300 border-4 border-green-500'>
-        
+       transition={{
+        duration:1,
+       }}
+       className='bg-red-300 border-2 border-green-500'>
+        hello
        </motion.div>
       </div>
     </>
