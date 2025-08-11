@@ -4,15 +4,18 @@ import Cards from "./components/Cards"
 import DialogBox from "./components/DialogBox"
 import Navbar from "./components/Navbar"
 import WatchVideoPage from "./Pages/WatchVideoPage"
+import LoadingPage from "./Pages/LoadingPage"
+import TodoList from "./components/TodoList"
 function App() {
  
   return (
     <div>
-       <Navbar />
+       {/* <Navbar />
        <CreatorProfile/>
        <WatchVideoPage />
        <Cards/> 
-       <DialogBox/>
+       <DialogBox/>  <LoadingPage /> */}
+      <TodoList />
 
     </div>
   )
