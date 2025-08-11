@@ -24,7 +24,7 @@ function DialogBox() {
         Open Dialog
       </Button>
 
-      <Dialog open={open} onClose={handleClose} data-aos="fade-in">
+      <Dialog open={open} onClose={handleClose} data-aos="zoom-out">
         <DialogTitle>Dialog Title</DialogTitle>
         <DialogContent>
           This is the content of the dialog.
