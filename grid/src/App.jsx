@@ -15,6 +15,9 @@ import Home from "./Pages/Home"
 import {  Routes, Route } from "react-router-dom"
 import Resturants from "./Pages/Resturants"
 import Orders from "./Pages/Orders"
+import RestaurantCard from "./Pages/Resturant"
+import VegeRestaurant from "./Pages/VegeRestaurant"
+import Resturant from "./Pages/Resturant"
 function App() {
  
   return (
@@ -39,6 +42,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/restaurants" element={<Resturants />} />
         <Route path="/order" element={<Orders />} />
+        <Route path="/your-restaurants" element={<Resturant />} />
+        <Route path="/:id-hotel" element={<VegeRestaurant />} />
       </Routes>
 
     </div>

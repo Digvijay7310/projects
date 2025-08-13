@@ -25,7 +25,7 @@
       closing: "11:00 PM",
       famousFor: "Mixed Vegetable Curry",
       address: "78, Lajpat Nagar, New Delhi",
-      photo: "https://via.placeholder.com/150?text=Veggie+Delight"
+      photo: "https://tse4.mm.bing.net/th/id/OIP.iAcLflmIWYxbYySOmPR1fQHaEo?pid=Api&P=0&h=180"
     },
     {
       name: "Sattvik Bhoj",
@@ -54,7 +54,7 @@
       closing: "10:00 PM",
       famousFor: "Chole Bhature",
       address: "54, Model Town, New Delhi",
-      photo: "https://via.placeholder.com/150?text=Kailash+Veg"
+      photo: "https://tse4.mm.bing.net/th/id/OIP.iAcLflmIWYxbYySOmPR1fQHaEo?pid=Api&P=0&h=180"
     },
     {
       name: "Annapurna Bhojanalay",
@@ -90,7 +90,7 @@
       closing: "11:00 PM",
       famousFor: "Gujarati Thali",
       address: "90, Vasant Kunj, New Delhi",
-      photo: "https://via.placeholder.com/150?text=Rajdhani+Veg"
+      photo: "https://tse4.mm.bing.net/th/id/OIP.iAcLflmIWYxbYySOmPR1fQHaEo?pid=Api&P=0&h=180"
     }
   ],
   "110058": [
