@@ -1,8 +1,11 @@
 import React from 'react';
 import { LuLeafyGreen } from 'react-icons/lu';
 import { MdShoppingCart } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import { AddItem } from '../redux/cartSlice';
 
 function Card({ name, image, id, price }) {
+  let dispatch = useDispatch()
   return (
     <div className='w-full bg-white p-4 rounded-lg flex flex-col items-center gap-3 hover:ring-2 ring-red-500 hover:shadow-lg hover:shadow-slate-400 hover:scale-95 duration-150'>
 
@@ -28,7 +31,9 @@ function Card({ name, image, id, price }) {
       </div>
 
       {/* Add to Cart Button */}
-      <button className='w-full mt-auto group flex justify-center items-center gap-2 p-2 bg-red-500 rounded text-white text-sm sm:text-base hover:scale-105 hover:cursor-pointer hover:text-white hover:rounded-2xl hover:bg-red-600 duration-200'>
+      <button
+      onClick={()=>dispatch(AddItem({id: id, name:name, price:price, image:image, qty:1}))}
+      className='w-full mt-auto group flex justify-center items-center gap-2 p-1 bg-red-500 rounded text-white text-sm sm:text-base hover:scale-105 hover:cursor-pointer hover:text-white hover:rounded-2xl hover:bg-red-600 duration-200'>
         <MdShoppingCart className='text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200' />
         Add To Cart
       </button>
