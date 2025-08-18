@@ -3,6 +3,7 @@ import { LuLeafyGreen } from 'react-icons/lu';
 import { MdShoppingCart } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { AddItem } from '../redux/cartSlice';
+import { toast } from 'react-toastify';
 
 function Card({ name, image, id, price }) {
   let dispatch = useDispatch()
@@ -32,7 +33,7 @@ function Card({ name, image, id, price }) {
 
       {/* Add to Cart Button */}
       <button
-      onClick={()=>dispatch(AddItem({id: id, name:name, price:price, image:image, qty:1}))}
+      onClick={()=>{dispatch(AddItem({id: id, name:name, price:price, image:image, qty:1})),toast.success("Item Added")}}
       className='w-full mt-auto group flex justify-center items-center gap-2 p-1 bg-red-500 rounded text-white text-sm sm:text-base hover:scale-105 hover:cursor-pointer hover:text-white hover:rounded-2xl hover:bg-red-600 duration-200'>
         <MdShoppingCart className='text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200' />
         Add To Cart

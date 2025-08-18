@@ -1,6 +1,6 @@
 import React from 'react';
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { RemoveItem } from '../redux/cartSlice';
+import { AddItem, RemoveItem, DecreaseItem, IncrementQty } from '../redux/cartSlice';
 import { useDispatch } from 'react-redux';
 
 function Card2({ name, id, price, image, qty }) {
@@ -24,9 +24,9 @@ function Card2({ name, id, price, image, qty }) {
         <div className="flex flex-col gap-2">
           <div className="text-sm sm:text-base font-semibold text-gray-800">{name}</div>
           <div className="flex items-center border rounded-md overflow-hidden w-[90px]">
-            <button className="w-1/3 bg-red-500 text-white text-sm py-1 hover:bg-red-600">-</button>
+            <button onClick={()=> qty>1?dispatch(DecreaseItem(id)): 1} className="w-1/3 bg-red-500 text-white text-sm py-1 hover:bg-red-600">-</button>
             <span className="w-1/3 text-center text-red-500 text-sm">{qty}</span>
-            <button className="w-1/3 bg-red-500 text-white text-sm py-1 hover:bg-red-600">+</button>
+            <button onClick={()=> dispatch(IncrementQty({id}))} className="w-1/3 bg-red-500 text-white text-sm py-1 hover:bg-red-600">+</button>
           </div>
         </div>
       </div>

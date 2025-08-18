@@ -7,6 +7,7 @@ import { dataContext } from "../context/UserContext";
 import { RxCrossCircled } from "react-icons/rx";
 import Card2 from "../components/Card2";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 function Home() {
   let { cate, setCate, input, showCart, setShowCart } = useContext(dataContext);
@@ -22,10 +23,17 @@ function Home() {
 
   let items = useSelector(state => state.cart)
 
-  let subTotal = items.reduce((total, item)=>total+item.price,0)
+  let subTotal = items.reduce((total, item)=> total + item.qty*item.price,0)
   let deliveryFee=20;;
   let taxes = subTotal*0.5/100;
-  let total = subTotal=deliveryFee+taxes
+  let total = Math.floor(subTotal+deliveryFee+taxes)
+
+  const formatCurrency = (value) => 
+    new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0
+    }).format(value)
   
 
   return (
@@ -74,8 +82,8 @@ function Home() {
 
       {/* Product */}
       <div className="w-full px-5 pt-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 place-items-center">
-          {cate.map((item) => (
+        <div className="grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-5 place-items-center">
+          {cate.length>1?(cate.map((item) => (
             <Card
               key={item.id}
               name={item.food_name}
@@ -83,13 +91,17 @@ function Home() {
               price={item.price}
               id={item.id}
             />
-          ))}
+          ))): (<div className="h-screen w-full flex  flex-col justify-center items-center gap-5 text-red-500">
+           <p className="font-semibold text-lg text-bold"> {input}</p>
+   <h4 className="text-3xl"> No Dish Found</h4>
+  </div>)}
+          
         </div>
       </div>
 
 {/* Cart */}
      
-        <div className={`w-[50vw] h-[100%] fixed top-0 right-0 bg-white shadow-xl p-5 transition-all ${showCart ? "translate-x-0": "translate-full"}`}>
+        <div className={`w-[50vw] min-w-[300px] h-[100%] fixed top-0 right-0 bg-white shadow-xl p-5 transition-all ${showCart ? "translate-x-0": "translate-full"}`}>
         <header className="flex justify-between items-center w-[100%] ">
           <span className="text-red-500 text-xl font-semibold">Order Item</span>
           <span>
@@ -98,21 +110,45 @@ function Home() {
             }} className="w-10 h-10 cursor-pointer text-red-500 hover:text-red-700 text-xl font-semibold" />
             </span>
         </header>
-        <div className="w-full mt-9 flex flex-col gap-3">
+        
+        {items.length>0 ? <>
+        <div className="w-full mt-9 flex flex-col gap-3 ">
           {items.map((item)=> (
-            <Card2 name={item.name} price={item.price}
+            <Card2 key={item.id} name={item.name} price={item.price}
             image={item.image} id={item.id} qty={item.qty} />
           ))}
         </div>
-        <div className="w-full border-t-2 border-red-500 mt-7 flex flex-col gap-4 p-8">
+        <div className="w-[80%] border-t-2 border-b-2 border-red-500 mt-7 flex flex-col gap-4 p-8">
           <div className="w-full flex justify-between items-center">
-          <span>SubTotal</span>
-          <span>{subTotal}</span>
+          <span className="text-md text-gray-600">SubTotal</span>
+          <span className="text-md text-red-400">{formatCurrency(subTotal)}/-</span>
           </div>
-          <div></div>
-          <div></div>
+          <div className="w-full flex justify-between items-center">
+          <span className="text-md text-gray-600">Delivery Fee</span>
+          <span className="text-md text-red-400">{formatCurrency(deliveryFee)}/-</span>
+          </div>
+          <div className="w-full flex justify-between items-center">
+          <span className="text-md text-gray-600">Taxes</span>
+          <span className="text-md text-red-400">{formatCurrency(taxes)}/-</span>
+          </div>
+
+          
         </div>
+        <div className="w-full flex justify-between items-center">
+          <span className="text-md text-gray-600">Total</span>
+          <span className="text-md text-red-400">{formatCurrency(total)}/-</span>
+          </div>
+           <button 
+           onClick={()=>{
+            toast.success("Successfully order Placed")
+           }}
+           className='w-full p-2 bg-red-500 rounded text-white sm:text-base hover:scale-105 hover:cursor-pointer hover:text-white hover:rounded-2xl hover:bg-red-600 duration-200'>Place order</button>
+
+           </>: <div className="h-[400px] text-center flex items-center justify-center text-3xl text-red-500">Empty Cart</div>}
+        
       </div>
+     
+       
      
     </div>
   );
