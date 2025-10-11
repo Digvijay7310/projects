@@ -1,11 +1,11 @@
-
-import {motion} from "motion/react"
-
+// import {motion} from "motion/react"
+import React from "react"
+import WebStories from "./WebStories"
 function App() {
 
   return (
     <>
-      <div className='bg-black h-dvh flex justify-center items-center'>
+      {/* <div className='bg-black h-dvh flex justify-center items-center'>
        <motion.div
        initial={{
         x:0,
@@ -21,7 +21,8 @@ function App() {
        className='bg-red-300 border-2 border-green-500'>
         hello
        </motion.div>
-      </div>
+      </div> */}
+      <WebStories />
     </>
   )
 }
