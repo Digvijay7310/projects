@@ -30,7 +30,7 @@ function App() {
         onClick={() => setDialog(true)}
         className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded-lg shadow"
       >
-        Upload Short Video
+        Upload Video
       </button>
 
       {dialog && (

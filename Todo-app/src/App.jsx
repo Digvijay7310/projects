@@ -4,9 +4,13 @@ import AdvancedTodo from './components/AdvancedTodo'
 
 function App() {
   return (
-    <div>
+    <div >
+      <h1>Theme Switcher with context</h1>
+      <button>Toggle Theme</button>
       <BasicTodo />
-      <AdvancedTodo />
+      <AdvancedTodo /> 
+
+
     </div>
   )
 }
