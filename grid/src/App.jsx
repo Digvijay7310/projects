@@ -18,6 +18,7 @@ import Orders from "./Pages/Orders"
 import RestaurantCard from "./Pages/Resturant"
 import VegeRestaurant from "./Pages/VegeRestaurant"
 import Resturant from "./Pages/Resturant"
+import AnimatedinputDisplay from "./AnimatedinputDisplay"
 function App() {
  
   return (
@@ -38,13 +39,14 @@ function App() {
         <Profile />
       </UserContextProvider> */}
 
-      <Routes>
+<AnimatedinputDisplay />
+      {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/restaurants" element={<Resturants />} />
         <Route path="/order" element={<Orders />} />
         <Route path="/your-restaurants" element={<Resturant />} />
         <Route path="/:id-hotel" element={<VegeRestaurant />} />
-      </Routes>
+      </Routes> */}
 
     </div>
   )
