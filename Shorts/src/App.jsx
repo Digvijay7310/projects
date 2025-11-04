@@ -1,15 +1,17 @@
-import './App.css'
-import ShortsScroll from './components/ShortsScroll'
-import VideoCard from './components/VideoCard'
-import Shortsfeed from './Shortsfeed'
+import React from 'react'
+import VideoFeed from '../components/VideoFeed'
 
 function App() {
-
   return (
-    <>
-     <VideoCard />
-      <Shortsfeee />
-    </>
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      width: '100%'
+    }} >
+      <VideoFeed />
+    </div>
   )
 }
 
