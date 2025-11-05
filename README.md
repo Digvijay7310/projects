@@ -1,9 +1,15 @@
-# Projects
+# ReactJS Practice Project
  
- ## Practice Projects
+ ## Practice Project
 
-I made simple project to enhanced my skills in UI and UX.
+  ### This project contain multiple react projects build using ReactJS.
 
-This is not big project. This contains simple project like context api with localStorage.
+I made simple projects to enhanced my skills in UI and UX and understand component based architecture.
+
+And Also add react and redux toolkit.
+
+This project help my personal growth.
+
+This is not big project. This contains simple project like context api with localStorage. 
 
 
