@@ -14,7 +14,8 @@ export default function App() {
         flexDirection: 'column',
         justifyContent: 'center',
         height: '100vh',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: "100%"
       }}>
         <h1>React Context Example</h1>
         <Login />

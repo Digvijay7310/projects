@@ -1,13 +1,24 @@
-import { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-export const UserContext = createContext()
+const UserContext = createContext();
 
-export function UserProvider({children}) {
-    const [user, setUser] = useState(null)
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-    return(
-        <UserContext.Provider value={{user, setUser}}>
-            {children}
-        </UserContext.Provider>
-    )
-}
+  // Mock login function
+  const login = (email, password) => {
+    const loggedInUser = { name: "Demo User", email, password }; // store password
+    setUser(loggedInUser);
+    return loggedInUser;
+  };
+
+  const logout = () => setUser(null);
+
+  return (
+    <UserContext.Provider value={{ user, setUser, login, logout }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export const useUser = () => useContext(UserContext);
