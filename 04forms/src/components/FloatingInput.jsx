@@ -20,9 +20,9 @@ function FloatingInput() {
   };
 
   return (
-    <div className='w-full max-w-md mx-auto bg-gradient-to-r from-sky-50 via-indigo-50 to-purple-50 p-6 rounded-2xl shadow-lg mt-10'>
+    <div className='w-full max-w-md mx-auto bg-gradient-to-l from-sky-50 via-indigo-50 to-purple-50 p-6 rounded-2xl shadow-lg mt-10'>
         <h1 className='text-blue-500 text-center font-semibold text-xl'>Login Form</h1>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-6'>
+      <form onSubmit={handleSubmit} className='flex flex-col space-y-8'>
         {error && <div className='text-red-600 text-center'>{error}</div>}
 
         {/* Email */}

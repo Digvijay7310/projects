@@ -11,7 +11,7 @@ function SearchComponent({search, setSearch}) {
         onChange={(e) => setSearch(e.target.value)}
         />
         <button type='button'
-        className='px-3 py-1 border-none bg-orange-700 text-white'
+        className='px-3 py-1 border-none bg-orange-700 text-white'k
         >S</button>
     </div>
   )
